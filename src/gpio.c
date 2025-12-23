@@ -119,21 +119,7 @@ void MX_GPIO_Init(void)
 uint32_t DC_Motor_Count = 0;
 uint8_t flag1 = 0;
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-	
-	if(GPIO_Pin == GPIO_PIN_5)
-	{
-		
-	  DC_Motor_Count++;
-		
-	}
-	if(GPIO_Pin == GPIO_PIN_13)
-	{
-	   flag1 = 1;
-	}
-	
-}
+/* Note: HAL_GPIO_EXTI_Callback is defined in stm32f4xx_it.c */
 /* USER CODE END 2 */
 
 /**
