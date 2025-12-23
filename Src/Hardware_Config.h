@@ -4,6 +4,7 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_i2c.h"
 #include "stm32f4xx_hal_tim.h"
+#include "stm32f4xx_hal_gpio_ex.h"
 
 extern I2C_HandleTypeDef hi2c1;
 extern UART_HandleTypeDef huart1;

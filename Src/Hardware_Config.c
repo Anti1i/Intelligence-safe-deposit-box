@@ -61,10 +61,26 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
-  
+
   // 电机使能 PE2
   GPIO_InitStruct.Pin = GPIO_PIN_2;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+
+  // I2C1 引脚: PB6(SCL), PB7(SDA)
+  GPIO_InitStruct.Pin = GPIO_PIN_6 | GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;       // 开漏复用
+  GPIO_InitStruct.Pull = GPIO_PULLUP;           // 上拉
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;    // AF4 = I2C1
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  // USART1 引脚: PA9(TX), PA10(RX)
+  GPIO_InitStruct.Pin = GPIO_PIN_9 | GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;       // 复用推挽
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF7_USART1;  // AF7 = USART1
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
 static void MX_I2C1_Init(void)
