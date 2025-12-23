@@ -19,13 +19,6 @@ extern __IO uint32_t GlobalTimingDelay100us;
 void SysTick_Handler(void)
 {
     HAL_IncTick();
-    HAL_SYSTICK_IRQHandler();
-    
-    /* 100us计时递减 - 用于红外脉冲测量 */
-    if(GlobalTimingDelay100us != 0)
-    {
-        GlobalTimingDelay100us--;
-    }
 }
 
 /******************************************************************************/
